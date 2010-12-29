@@ -11,5 +11,6 @@ namespace FPX
 		public static int height;
 
         public static Engine engine;
+        public static Screen screen;
 	}
 }

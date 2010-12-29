@@ -31,6 +31,7 @@ namespace FPX
 
             //set some static FP variables
             FP.engine = this;
+            FP.screen = new Screen();
 
 		}
 
@@ -90,7 +91,7 @@ namespace FPX
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw(GameTime gameTime)
 		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
+            FP.screen.refresh();
 
 			// TODO: Add your drawing code here
 
