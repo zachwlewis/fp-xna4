@@ -19,12 +19,19 @@ namespace FPX
 
 		public Engine(int width, int height)
 		{
+            //set the width/height
 			FP.width = width;
 			FP.height = height;
+
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = FP.width;
 			graphics.PreferredBackBufferHeight = FP.height;
+
 			System.Console.WriteLine("FPX Initialized");
+
+            //set some static FP variables
+            FP.engine = this;
+
 		}
 
 		/// <summary>

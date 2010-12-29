@@ -9,5 +9,7 @@ namespace FPX
 	{
 		public static int width;
 		public static int height;
+
+        public static Engine engine;
 	}
 }
