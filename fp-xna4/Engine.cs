@@ -24,7 +24,7 @@ namespace FPX
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = FP.width;
 			graphics.PreferredBackBufferHeight = FP.height;
-			System.Console.WriteLine("FP-Xna");
+			System.Console.WriteLine("FPX Initialized");
 		}
 
 		/// <summary>
