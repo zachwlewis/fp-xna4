@@ -20,7 +20,8 @@ namespace FPX
         public float angle = 0f;
 
         //screen scale (to scale screen)
-        public float scale = 0f;
+        public float scaleX = 0f;
+        public float scaleY = 0f;
 
         //screen size
         public readonly int width;
