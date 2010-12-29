@@ -80,7 +80,8 @@ namespace FPX
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 				this.Exit();
 
-			// TODO: Add your update logic here
+            //change world
+            if (FP._goto != null) { checkworld(); }
 
 			base.Update(gameTime);
 		}
@@ -97,5 +98,21 @@ namespace FPX
 
 			base.Draw(gameTime);
 		}
+
+        /// <summary>
+        /// This checks if a new world has been set, and if it has, go to it
+        /// </summary>
+        public void checkworld()
+        {
+            if (FP._goto == null) { return; }
+
+            FP.world.end();
+            FP.world.updateLists();
+
+            FP._world = FP._goto;
+            FP.world.begin();
+
+            FP._goto = null;
+        }
 	}
 }
