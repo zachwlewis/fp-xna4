@@ -72,6 +72,8 @@ namespace FPX
 		/// <summary>
 		/// Allows the game to run logic such as updating the world,
 		/// checking for collisions, gathering input, and playing audio.
+        /// 
+        /// (Essentially the same as FP.engine.onEnterFrame, from FP AS3)
 		/// </summary>
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update(GameTime gameTime)
@@ -79,9 +81,6 @@ namespace FPX
 			// Allows the game to exit
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 				this.Exit();
-
-            //Add INPUT UPDATE here
-            // ...
 
             //World update here ...
             if (FP._world.active)
@@ -93,6 +92,9 @@ namespace FPX
             FP._world.updateLists();
 
             if (FP._goto != null) checkWorld();
+
+            //Add INPUT UPDATE here
+            // ...
 
 			base.Update(gameTime);
 		}
