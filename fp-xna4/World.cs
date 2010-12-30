@@ -63,6 +63,16 @@ namespace FPX
 		}
 
         /// <summary>
+        /// Removes an entity
+        /// </summary>
+        public Entity remove(Entity e)
+        {
+			_remove.Remove(e);
+			e.world = null;
+			return e;
+        }
+
+        /// <summary>
         /// Updates the add/remove lists at the end of the frame.
         /// </summary>
         public void updateLists() 
