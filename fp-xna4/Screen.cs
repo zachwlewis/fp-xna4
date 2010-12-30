@@ -27,12 +27,18 @@ namespace FPX
         public readonly int width;
         public readonly int height;
 
+        /// <summary>
+        /// Constructor function
+        /// </summary>
         public Screen()
         {
             width = FP.width;
             height = FP.height;
         }
 
+        /// <summary>
+        /// "Refreshes" the screen. Paints over the screen with a color. (FP.screen.color)
+        /// </summary>
         public void refresh()
         {
             FP.engine.GraphicsDevice.Clear(color);

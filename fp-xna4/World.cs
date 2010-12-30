@@ -17,40 +17,37 @@ namespace FPX
 
         public void begin() { }
 
+        /// <summary>
+        /// Updates all the entities
+        /// </summary>
         public void update()
         {
-            /*
-             * This WILL be the update loop, eventually
-            Entity e = _updateFirst;
-			while (e)
-			{
-				if (e.active)
-				{
-					//if (e._tween) e.updateTweens();
-					e.update();
-				}
-				//if (e._graphic && e._graphic.active) e._graphic.update();
-				e = e._updateNext;
-			}
-            */
+
+            foreach (Entity e in entities)
+            {
+                if (e.active)
+                {
+                    //if(e._tween) { e.updateTweens(); }
+                    e.update();
+                }
+
+                //this is how the graphics are updated seperately from the entities
+                //if (e._graphic && e._graphic.active) e._graphic.update();
+            }
         }
 
+        /// <summary>
+        /// Renders all the entities
+        /// </summary>
         public void render()
         {
-            /*
-             * This will be the render loop, eventually
-            Entity e;
-            int i =_layerList.length;
-			while (i --)
-			{
-				e = _renderLast[_layerList[i]];
-				while (e)
-				{
-					if (e.visible) e.render();
-					e = e._renderPrev;
-				}
-			}
-            */
+            foreach (Entity e in entities)
+            {
+                if (e.visible)
+                {
+                    e.render();
+                }
+            }
         }
 
         /// <summary>
@@ -85,8 +82,7 @@ namespace FPX
                     e._added = false;
 					e.removed();
 
-					//removeUpdate(e);
-					//removeRender(e);
+                    _remove.Remove(e);
 
 					//if (e._type) removeType(e);
 					//if (e.autoClear && e._tween) e.clearTweens();
@@ -99,14 +95,15 @@ namespace FPX
 				foreach (Entity e in _add)
 				{
 					e._added = true;
-					//addUpdate(e);
-					//addRender(e);
 					//if (e._type) addType(e);
 					e.added();
+
+                    _add.Remove(e);
 				}
 			}
 			
 			// sort the depth list
+            // Do we even need to do this?
 			/*if (_layerSort)
 			{
 				if (_layerList.length > 1) FP.sort(_layerList, true);
