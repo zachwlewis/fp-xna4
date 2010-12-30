@@ -13,6 +13,7 @@ namespace FPX
         public static Engine engine;
         public static Screen screen;
 
+        //world
         public static World _world;
         public static World _goto = null;
 

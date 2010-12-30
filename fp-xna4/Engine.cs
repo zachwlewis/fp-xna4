@@ -80,8 +80,19 @@ namespace FPX
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 				this.Exit();
 
-            //change world
-            if (FP._goto != null) { checkworld(); }
+            //Add INPUT UPDATE here
+            // ...
+
+            //World update here ...
+            if (FP._world.active)
+            {
+                //Need to add this functionality
+                //if (FP._world._tween) FP._world.updateTweens();
+                FP._world.update();
+            }
+            FP._world.updateLists();
+
+            if (FP._goto != null) checkWorld();
 
 			base.Update(gameTime);
 		}
@@ -92,9 +103,13 @@ namespace FPX
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw(GameTime gameTime)
 		{
+            
+			
+			// render loop
             FP.screen.refresh();
-
-			// TODO: Add your drawing code here
+			if (FP._world.visible) FP._world.render();
+			
+            //FP.screen.redraw();
 
 			base.Draw(gameTime);
 		}
@@ -102,16 +117,22 @@ namespace FPX
         /// <summary>
         /// This checks if a new world has been set, and if it has, go to it
         /// </summary>
-        public void checkworld()
+        public void checkWorld()
         {
+            //end if the world to go to is null
             if (FP._goto == null) { return; }
 
+            //end the current world
             FP.world.end();
             FP.world.updateLists();
 
+            //go to the new world
             FP._world = FP._goto;
+
+            //begin new world
             FP.world.begin();
 
+            //set the world to goto as null
             FP._goto = null;
         }
 	}
